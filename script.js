@@ -5,8 +5,8 @@ const lowerCase = "abcdefghijklmnopqrstuvwxyz";
 const symbols = "~!@#$%^&*()_+{}|<>?/.,][{}|=-";
 const numbers = "0123456789";
 const allChars = upperCase + lowerCase + symbols + numbers;
-const  generateButton = document.getElementById("generate");
-generateButton.addEventListener("click",generatePassword);
+const generateButton = document.getElementById("generate");
+generateButton.addEventListener("click", generatePassword);
 function generatePassword() {
   let password = "";
   password += upperCase[Math.floor(Math.random() * upperCase.length)];
@@ -19,9 +19,13 @@ function generatePassword() {
   passwordinput.value = password;
 }
 const copy = document.getElementById("copy");
-copy.addEventListener("click",copyPassword)
+copy.addEventListener("click", copyPassword);
 async function copyPassword() {
   const password = passwordinput.value;
+  if ((password === "")) {
+    alert("password is Empty");
+    return;
+  }
 
   try {
     await navigator.clipboard.writeText(password);
